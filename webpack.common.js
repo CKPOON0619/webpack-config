@@ -1,5 +1,5 @@
 const path = require('path');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   devServer:{
     static: {
@@ -8,6 +8,7 @@ module.exports = {
     compress: true,
     port: 3000,
   },
+  plugins: [new HtmlWebpackPlugin()],
   entry: './src/index.ts',
   devtool: 'source-map',
   module: {

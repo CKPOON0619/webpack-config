@@ -5,13 +5,14 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "watch": "webpack --watch",
-    "build": "webpack serve --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js"
   },
   "description": "A project to practice webpack configurations",
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
     "babel-loader": "^8.2.5",
+    "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.3",
     "webpack": "^5.72.0",
