@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  mode:"development",
   devServer:{
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -10,7 +9,7 @@ module.exports = {
     port: 3000,
   },
   entry: './src/index.ts',
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -29,9 +28,5 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-  },
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
   },
 };
