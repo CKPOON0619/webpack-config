@@ -23,7 +23,8 @@ npm i -D webpack webpack-cli webpack-dev-server
 ```
 npm i -D typescript ts-loader
 ```
-and then setup `webpack.config.js`:
+and then setup `webpack.config.js`. Under `devServer` there are different options to configure the dev server. 
+For example, `compress` would serve the files as gzip to the browser, `hot` would hot update when changes happen to files.
 ```js
 const path = require('path');
 
@@ -35,6 +36,7 @@ module.exports = {
     },
     compress: true,
     port: 3000,
+    hot:true
   },
   entry: './src/index.ts',
   devtool: 'inline-source-map',
@@ -139,4 +141,24 @@ Then to modify production settings, use `[contenthash]` to represent any hashes 
     filename: 'main.[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
   },
+```
+
+9. CSS bundle
+First we will need to install the loader for css
+```
+npm i -D css-loader mini-css-extract-plugin
+```
+`css-loader` would tell webpack how to handle `css` files and `mini-css-extract-plugin` to create final css bundle file. 
+`style-loader` is another alternative which inject the css into the `js` file.
+
+After that we need to update the `webpack.common.js`,
+
+```js
+{
+  plugins:[new MiniCssExtractPlugin()]
+  rules:[{
+    test:/\.css/i,
+    use: [MiniCssExtractPlugin.loader,"css-loader"]
+  }],
+}
 ```
