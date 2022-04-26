@@ -198,6 +198,22 @@ and then apply `html-loader` and `file-loader` in webpack config where `"assets"
 }
 
 ```
+For css to load public path for images, change the webpack config for css extract plugin loader from
+```js
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
+```
+to  
+```js
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options:{
+              publicPath:""
+            }
+          },
+          "css-loader"
+        ]
+```
 
 11. Cleaning before every build
 We use this plugin to clean up the build files everytime we run build:
