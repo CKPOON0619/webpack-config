@@ -31,7 +31,19 @@ module.exports = {
         use: {
           loader:"babel-loader"
         }  
-      }
+      },
+      {
+        test: /\.html$/,
+        loader: "html-loader",
+      },
+      {
+        test: /\.(png|jpeg|gif|svg)$/,
+        loader: "file-loader",
+        options:{
+          name:"[name].[hash].[ext]",
+          outputPath:"assets"
+        }
+      },
     ],
   },
   resolve: {

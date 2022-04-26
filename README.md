@@ -162,3 +162,60 @@ After that we need to update the `webpack.common.js`,
   }],
 }
 ```
+10. Loading png, svg, jpeg and gif assets
+To do that we will use html-loader and file-loader. 
+```
+npm i -D html-loader file-loader
+```
+and then apply `html-loader` and `file-loader` in webpack config where `"assets"`, the file specified on `outputPath`, would be the file those files would be copied to.
+
+```js
+{
+    rules:[
+      {
+        test: /\.html$/,
+        loader: "html-loader",
+      },
+      {
+        test: /\.(png|jpeg|gif|svg)$/,
+        loader: "file-loader",
+        options:{
+          name:"[name].[hash].[ext]",
+          outputPath:"assets"
+        }
+      },
+    ]
+}
+
+```
+
+11. Cleaning before every build
+We use this plugin to clean up the build files everytime we run build:
+```
+npm i -D clean-webpack-plugin
+```
+and then in production config,
+```js
+{
+  plugins:[new CleanWebpackPlugin()]
+}
+```
+
+12. BrowserLists
+We can set up browserlist configurations in webpack to specify what browser the build should be compatible with by sharing this configuration with different loaders and plugins and so the script is properly transpiled. 
+To set it up, one option is to create a `.browserslistrc` file. 
+```
+# Browsers that we support
+
+defaults
+not IE 11
+maintained node versions
+```
+Or alternatively, specifying the list in `package.json`
+
+```json
+{
+  "target": "browserslist",
+  "browserslist":["defaults","not IE 11","maintained node versions"]
+}
+```
