@@ -12,7 +12,7 @@ module.exports = {
   plugins: [new HtmlWebpackPlugin({
     template:"./src/template.html"
   }), new MiniCssExtractPlugin()],
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   devtool: 'source-map',
   module: {
     rules: [
@@ -26,7 +26,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.tsx?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader:"babel-loader"

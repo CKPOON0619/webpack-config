@@ -1,5 +1,15 @@
 # webpack-config
-A project to practice webpack configurations:
+A project to practice webpack configurations.
+First, these are some basics in webpack config:
+**Entry**: This tells webpack the entry point to begin the bundling
+
+**Output**: This tells webpack where to emit bundles when it has finished the bundling
+
+**Loaders**: Webpack only understands javascript and JSON. Loaders tell webpack how to handle other files in the javascript application such as CSS, images, typescript, etc
+
+**Mode**: This tells webpack the environment in which the bundles are meant for. This enables webpack’s built-in optimizations that correspond to each environment.
+
+**Plugins**: While loaders are used to transform certain types of modules, plugins can be leveraged to perform a wider range of tasks like bundle optimization, asset management, and injection of environment variables (see official doc).
 
 1. Init npm package:
 ```
@@ -106,7 +116,7 @@ and then update webpack config:
 {
   module:{
     rules:[{
-      test: /\.tsx$/,
+      test: /\.jsx$/,
       exclude: /node_modules/,
       use: {
         loader:"babel-loader"
@@ -219,3 +229,20 @@ Or alternatively, specifying the list in `package.json`
   "browserslist":["defaults","not IE 11","maintained node versions"]
 }
 ```
+
+13. Set up react
+Install react,
+```
+npm i react react-dom @types/react @types/react-dom
+```
+Install babel for react
+```
+npm i -D @babel/preset-react
+```
+Set up babel config
+```js
+{
+   presets: ["@babel/preset-env",["@babel/preset-react",{ runtime: "automatic"}]]
+}
+```
+the option `{ runtime: "automatic"}` would allow us to use `jsx` without importing `react` explicitly.
