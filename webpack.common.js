@@ -1,4 +1,5 @@
 const path = require('path');
+const ReactRefreshBabelPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
@@ -10,9 +11,11 @@ module.exports = {
     compress: true,
     port: 3000,
   },
-  plugins: [new HtmlWebpackPlugin({
-    template:"./src/template.html"
-  }), new MiniCssExtractPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({ template:"./src/template.html"}), 
+    new MiniCssExtractPlugin(), 
+    new ReactRefreshBabelPlugin()
+  ],
   entry: './src/index.tsx',
   devtool: 'source-map',
   output: {

@@ -288,3 +288,22 @@ Set up babel config
 }
 ```
 the option `{ runtime: "automatic"}` would allow us to use `jsx` without importing `react` explicitly.
+
+14. React refresh plugin
+This is an experimental plugin which is already implemented into `react-create-app` that allows hot refresh of the app without resetting the state of the app as the code changes.
+
+```
+npm install -D @pmmmwh/react-refresh-webpack-plugin react-refresh
+```
+
+In babel config,
+
+```js
+  plugins:["react-refresh/babel"]
+```
+
+In webpack,
+
+```js
+  plugins: [new ReactRefreshPlugins()]
+```
