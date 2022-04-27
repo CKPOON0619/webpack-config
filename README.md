@@ -173,7 +173,7 @@ After that we need to update the `webpack.common.js`,
 }
 ```
 10. Loading png, svg, jpeg and gif assets
-To do that we will use html-loader and file-loader. 
+To do that before webpack 5 we will use html-loader and file-loader. 
 ```
 npm i -D html-loader file-loader
 ```
@@ -192,12 +192,20 @@ and then apply `html-loader` and `file-loader` in webpack config where `"assets"
         options:{
           name:"[name].[hash].[ext]",
           outputPath:"assets"
-        }
+        },
+        type: 'javascript/auto'
       },
     ]
 }
 ```
-**alternatively** in webpack 5 we could use the asset modules instead, 
+**Alternatively** in webpack 5 we could use the asset modules instead by setting `type:"assets"`, `type:"assets/resources"` etc. options. When using webpack 5 while still using old assets loaders (i.e. file-loader/url-loader/raw-loader), specify `type: 'javascript/auto'` to stop the asset modules.
+
+- `asset/resource` emits a separate file and exports the URL. Previously achievable by using file-loader.
+- `asset/inline` exports a data URI of the asset. Previously achievable by using url-loader.
+- `asset/source` exports the source code of the asset. Previously achievable by using raw-loader.
+- `asset` automatically chooses between exporting a data URI and emitting a separate file. Previously achievable by using url-loader with asset size limit.
+
+Further configuration could be set up to parse the files as well using `parser` config. For instance, `parser.dataUrlCondition.maxSize` would set the maximum size of the parsed image.  
 
 ```js
 {

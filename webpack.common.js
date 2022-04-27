@@ -6,6 +6,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
+    hot:true,
     compress: true,
     port: 3000,
   },
@@ -14,6 +15,9 @@ module.exports = {
   }), new MiniCssExtractPlugin()],
   entry: './src/index.tsx',
   devtool: 'source-map',
+  output: {
+    assetModuleFilename: 'images/[hash][ext][query]'
+  },
   module: {
     rules: [
       {
@@ -41,17 +45,9 @@ module.exports = {
         }  
       },
       {
-        test: /\.html$/,
-        loader: "html-loader",
-      },
-      {
         test: /\.(png|jpeg|gif|svg)$/,
-        loader: "file-loader",
-        options:{
-          name:"[name].[hash].[ext]",
-          outputPath:"assets"
-        }
-      },
+        type:"asset/resource"
+      }
     ],
   },
   resolve: {
