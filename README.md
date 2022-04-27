@@ -196,9 +196,27 @@ and then apply `html-loader` and `file-loader` in webpack config where `"assets"
       },
     ]
 }
-
 ```
-For css to load public path for images, change the webpack config for css extract plugin loader from
+**alternatively** in webpack 5 we could use the asset modules instead, 
+
+```js
+{
+  output:{
+    assetModuleFileName: "image/[hash][ext][query]"
+  },
+  module:{
+    rules:[
+      {
+        test: /\.(png|jpeg|gif|svg)$/,
+        type:"assets/resource"
+      }
+    ]
+  }
+}
+```
+
+
+For css to load for images, change the webpack config for css extract plugin loader from
 ```js
         use: [MiniCssExtractPlugin.loader, "css-loader"]
 ```
