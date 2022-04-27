@@ -8,6 +8,9 @@ module.exports = merge(commonConfig,{
   devServer:{
     hot:true
   },
+  plugins:[
+    new ReactRefreshBabelPlugin()
+  ],
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),

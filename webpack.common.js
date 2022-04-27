@@ -13,8 +13,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({ template:"./src/template.html"}), 
-    new MiniCssExtractPlugin(), 
-    new ReactRefreshBabelPlugin()
+    new MiniCssExtractPlugin()
   ],
   entry: './src/index.tsx',
   devtool: 'source-map',
