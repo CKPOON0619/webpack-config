@@ -302,8 +302,10 @@ In babel config,
   plugins:["react-refresh/babel"]
 ```
 
-In webpack,
+In webpack dev config,
 
 ```js
   plugins: [new ReactRefreshPlugins()]
 ```
+To wipe the state, of the component whenever the file is changes, add `// @refresh reset` comment to the file.
+
