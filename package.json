@@ -5,8 +5,7 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "watch": "webpack --watch",
-    "build": "webpack --config webpack.prod.js",
-    "build-dev": "webpack --config webpack.dev.js"
+    "build": "webpack --config webpack.prod.js"
   },
   "description": "A project to practice webpack configurations",
   "devDependencies": {
